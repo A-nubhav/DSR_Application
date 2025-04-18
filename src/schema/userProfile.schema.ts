@@ -15,12 +15,6 @@ export class User {
   name: string;
 
   @Prop()
-  friendCout:number;
-
-  @Prop()
-  requestCount:number;
-
-  @Prop()
   ip:string;
 
   @Prop()

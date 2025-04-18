@@ -26,8 +26,6 @@ export class AuthService {
             password:hashPassword,
             name:userData.name,
             isActive:false,
-            friendCount:0,
-            requestCount:0,
             ip:ip
         });
         console.log(user);
