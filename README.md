@@ -43,6 +43,62 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## 🚀 API Endpoints
+
+### 🔐 Authentication
+
+- `POST /auth/register`:  
+  Create a new user account  
+  **Body:** `{ "email": string, "name": string, "password": string }`
+
+- `POST /auth/login`:  
+  Authenticate and get JWT token  
+  **Body:** `{ "email": string, "password": string }`
+
+- `POST /auth/logout`:  
+  Logout user and mark them inactive  
+  **Header:** `Authorization: Bearer <JWT>`
+
+- `GET /users/me`:  
+  Get your user profile  
+  **Header:** `Authorization: Bearer <JWT>`
+
+---
+
+### 👥 Contact System
+
+- `POST /contacts/request`:  
+  Send contact request to another user  
+  **Header:** `Authorization: Bearer <JWT>`  
+  **Body:** `{ "email": string }`
+
+- `POST /contacts/accept`:  
+  Accept a contact request  
+  **Header:** `Authorization: Bearer <JWT>`  
+  **Body:** `{ "email": string }`
+
+- `GET /contacts`:  
+  List all accepted contacts (returns their emails)  
+  **Header:** `Authorization: Bearer <JWT>`
+
+✅ Each contact request stores sender and receiver details  
+✅ Only accepted contacts can send messages
+
+---
+
+### 💬 Messaging
+
+- `POST /messages`:  
+  Send a message to a contact  
+  **Header:** `Authorization: Bearer <JWT>`  
+  **Body:** `{ "receiverIdEmail": string, "message": string }`
+
+- `GET /messages/:contactId?page=1&limit=10`:  
+  Get paginated messages with a contact  
+  **Header:** `Authorization: Bearer <JWT>`
+
+✅ Rate Limiting: Users can send **up to 5 messages per minute**  
+✅ Implemented using Winston & Nest-Winston logging
 
 ## Run tests
 
