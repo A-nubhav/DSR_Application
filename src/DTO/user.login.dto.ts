@@ -8,4 +8,7 @@ export class UserLogininDto {
   @MinLength(6)
   @IsNotEmpty()
   password: string;
+
+  @IsNotEmpty()
+  deviceID:string;
 }

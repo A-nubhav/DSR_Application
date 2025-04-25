@@ -8,8 +8,8 @@ import { helperService } from './helper.service';
     JwtModule.registerAsync({
       global: true,
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('jwt.secret'),
-        signOptions: {expiresIn: configService.get<string>('jwt.expiry')}
+        secret: configService.get<string>('JWT_SECRET'),
+        signOptions: {expiresIn: configService.get<string>('JWT_EXPIRY')}
       }),
       inject:[ConfigService]
     })

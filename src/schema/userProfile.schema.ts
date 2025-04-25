@@ -1,24 +1,42 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
 
-export type UserDocument = User & Document;
+import { Table, Column, Model, DataType, AllowNull } from 'sequelize-typescript';
 
-@Schema()
-export class User {
-  @Prop({ required: true ,unique:true})
-  email: string;
+@Table({
+  tableName: 'users',
+  timestamps: true,   
+})
+export class User extends Model {
+  @Column({
+    type: DataType.STRING,
+    allowNull: false
+  })
+  declare name: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    unique: true
+  })
+  declare email: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false
+  })
+  declare password: string;
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+    field: 'is_active' 
+  })
+  declare isActive: boolean;
+
+  @Column({
+    type:DataType.STRING,
+    allowNull:true
+  })
+  declare profilePicture:string;
   
-  @Prop({required:true})
-  password:string;
-
-  @Prop()
-  name: string;
-
-  @Prop()
-  ip:string;
-
-  @Prop()
-  isActive:boolean;
+  
 }
-
-export const UserSchema = SchemaFactory.createForClass(User);
