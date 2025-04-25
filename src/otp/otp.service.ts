@@ -13,8 +13,8 @@ export class OtpService {
             let transporter = nodemailer.createTransport({
                 service: "gmail",
                 auth: {
-                    user: 'anubhav.misr@gmail.com', // Replace with your Gmail
-                    pass: "ditgldtoygufhyzu"// Replace with your Gmail password or App Password
+                    user: process.env.user, // Replace with your Gmail
+                    pass:process.env.pass// Replace with your Gmail password or App Password
                 }
             });
 
