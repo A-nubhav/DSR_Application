@@ -8,7 +8,7 @@ export class UserService {
     async getProfile(user){
         const id:number=user.id;
         const userProfile= await this.userModel.findByPk(id);
-        return `userProfile:${userProfile}`;
+        return userProfile;
     }
 
     async updateUser(user,userUpdateData){

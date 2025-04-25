@@ -9,6 +9,10 @@ export const configuration = () => {
         JWT_EXPIRY:process.env['JWT_EXPIRY'],
         REDIS_HOST:process.env['REDIS_HOST'],
         REDIS_PORT:process.env['REDIS_PORT'],
-        REDIS_TTL:process.env['REDIS_TTL']
+        REDIS_TTL:process.env['REDIS_TTL'],
+        region: process.env.AWS_REGION,
+        accessKeyId: process.env.ACESS_KEY_ID,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY,
+        bucketName: process.env.BUCKET_NAME
     })
   }
