@@ -31,8 +31,7 @@ export class AuthController {
        return this.AuthService.userSignout(request.user);
     }
     
-    @ApiBearerAuth('JWT')
-    @UseGuards(jwtGuard)
+
     @Post('/forgotpassword')
     forgotPassword(@Req() request,@Body() password:Record<string,string>){
       const { authorization }: any = request.headers;
